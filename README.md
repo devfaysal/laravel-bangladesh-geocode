@@ -1,4 +1,5 @@
-# Very short description of the package
+# Bangladesh Geocode
+Division, District and Upazila data of Bangladesh for Laravel application.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/devfaysal/laravel-bangladesh-geocode.svg?style=flat-square)](https://packagist.org/packages/devfaysal/laravel-bangladesh-geocode)
 [![Build Status](https://img.shields.io/travis/devfaysal/laravel-bangladesh-geocode/master.svg?style=flat-square)](https://travis-ci.org/devfaysal/laravel-bangladesh-geocode)
@@ -25,7 +26,15 @@ php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeo
 ## Usage
 
 ``` php
-// Usage description here
+use Devfaysal\BangladeshGeocode\Models\Division;
+use Devfaysal\BangladeshGeocode\Models\District;
+use Devfaysal\BangladeshGeocode\Models\Upazila;
+
+$divisions = Division::all();
+$districts = District::all();
+$upazilas = Upazila::all();
+
+Use any Laravel model functions...
 ```
 
 ### Testing
