@@ -65,6 +65,7 @@ If you discover any security related issues, please email devfaysal@gmail.com in
 
 - [Faysal Ahamed](https://github.com/devfaysal)
 - [All Contributors](../../contributors)
+- Special Thanks to [Nuhil Mehdy](https://github.com/nuhil/bangladesh-geocode). All of the Division, District and Upazila data of this package is from his repo.
 
 ## License
 
