@@ -1,0 +1,54 @@
+{
+    "name": "devfaysal/laravel-bangladesh-geocode",
+    "description": "",
+    "keywords": [
+        "devfaysal",
+        "bangladesh-geocode"
+    ],
+    "homepage": "https://github.com/devfaysal/laravel-bangladesh-geocode",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Faysal Ahamed",
+            "email": "devfaysal@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "illuminate/support": "^6.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "4.*",
+        "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Devfaysal\\BangladeshGeocode\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Devfaysal\\BangladeshGeocode\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Devfaysal\\BangladeshGeocode\\BangladeshGeocodeServiceProvider"
+            ],
+            "aliases": {
+                "BangladeshGeocode": "Devfaysal\\BangladeshGeocode\\BangladeshGeocodeFacade"
+            }
+        }
+    }
+}
