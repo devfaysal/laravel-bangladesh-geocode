@@ -34,7 +34,13 @@ $divisions = Division::all();
 $districts = District::all();
 $upazilas = Upazila::all();
 
-Use any Laravel model functions...
+$division = Division::find(1);
+$districts = $division->districts;
+
+$district = District::find(1);
+$upazilas = $district->upazilas;
+
+//Use any Laravel model functions...
 ```
 
 ### Testing
