@@ -21,7 +21,7 @@ Publish Migration and Seeds
 ```bash
 php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider"
 
-//If you need to overrride previously published migrationa and seeds
+#If you need to overrride previously published migrationa and seeds
 php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider" --force
 
 php artisan migrate
