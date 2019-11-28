@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Devfaysal\BangladeshGeocode\Models\Division;
+use Illuminate\Support\Facades\DB;
 
 class DivisionSeeder extends Seeder
 {
@@ -23,13 +23,7 @@ class DivisionSeeder extends Seeder
             array('id' => '8','name' => 'Mymensingh','bn_name' => 'ময়মনসিংহ','url' => 'www.mymensinghdiv.gov.bd')
         );
 
-        foreach($divisions as $division){
-            Division::create([
-                'name' => $division['name'],
-                'bn_name' => $division['bn_name'],
-                'url' => $division['url'],
-            ]);
-        }
+        DB::table('divisions')->insert($divisions);
 
     }
 }

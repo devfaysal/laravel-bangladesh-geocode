@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Devfaysal\BangladeshGeocode\Models\Upazila;
+use Illuminate\Support\Facades\DB;
 
 class UpazilaSeeder extends Seeder
 {
@@ -506,13 +506,6 @@ class UpazilaSeeder extends Seeder
             array('id' => '491','district_id' => '64','name' => 'Netrokona Sadar','bn_name' => 'নেত্রকোণা সদর','url' => 'netrokonasadar.netrokona.gov.bd')
         );
 
-        foreach($upazilas as $upazila){
-            Upazila::create([
-                'district_id' => $upazila['district_id'],
-                'name' => $upazila['name'],
-                'bn_name' => $upazila['bn_name'],
-                'url' => $upazila['url'],
-            ]);
-        }
+        DB::table('upazilas')->insert($upazilas);
     }
 }

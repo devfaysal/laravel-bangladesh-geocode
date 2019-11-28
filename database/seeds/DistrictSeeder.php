@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Devfaysal\BangladeshGeocode\Models\District;
+use Illuminate\Support\Facades\DB;
 
 class DistrictSeeder extends Seeder
 {
@@ -79,15 +79,6 @@ class DistrictSeeder extends Seeder
             array('id' => '64','division_id' => '8','name' => 'Netrokona','bn_name' => 'নেত্রকোণা','lat' => '24.870955','lon' => '90.727887','url' => 'www.netrokona.gov.bd')
         );
 
-        foreach($districts as $district){
-            District::create([
-                'division_id' => $district['division_id'],
-                'name' => $district['name'],
-                'bn_name' => $district['bn_name'],
-                'lat' => $district['lat'],
-                'lon' => $district['lon'],
-                'url' => $district['url'],
-            ]);
-        }
+        DB::table('districts')->insert($districts);
     }
 }

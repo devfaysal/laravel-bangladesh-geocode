@@ -3,6 +3,7 @@
 namespace Devfaysal\BangladeshGeocode\Tests;
 
 use Orchestra\Testbench\TestCase;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Collection;
 use Devfaysal\BangladeshGeocode\Models\Upazila;
 use Devfaysal\BangladeshGeocode\Models\District;
@@ -76,9 +77,7 @@ class BangladeshGeocode extends TestCase
             array('id' => '2','division_id' => '1','name' => 'Feni','bn_name' => 'ফেনী','lat' => '23.023231','lon' => '91.3840844','url' => 'www.feni.gov.bd'),
             array('id' => '3','division_id' => '1','name' => 'Brahmanbaria','bn_name' => 'ব্রাহ্মণবাড়িয়া','lat' => '23.9570904','lon' => '91.1119286','url' => 'www.brahmanbaria.gov.bd'),
         );
-        foreach($districts as $district){
-            District::create($district);
-        }
+        DB::table('districts')->insert($districts);
 
         $division = Division::first();
 
@@ -100,10 +99,7 @@ class BangladeshGeocode extends TestCase
             array('id' => '2','district_id' => '1','name' => 'Barura','bn_name' => 'বরুড়া','url' => 'barura.comilla.gov.bd'),
             array('id' => '3','district_id' => '1','name' => 'Brahmanpara','bn_name' => 'ব্রাহ্মণপাড়া','url' => 'brahmanpara.comilla.gov.bd'),
         );
-
-        foreach($upazilas as $upazila){
-            Upazila::create($upazila);
-        }
+        DB::table('upazilas')->insert($upazilas);
 
         $district = District::first();
 
@@ -113,6 +109,5 @@ class BangladeshGeocode extends TestCase
         $upazila = Upazila::first();
         $this->assertInstanceOf(District::class, $upazila->district);
     }
-
 
 }
