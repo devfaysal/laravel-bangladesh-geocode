@@ -2,6 +2,8 @@
 Division, District and Upazila data of Bangladesh for Laravel application.
 Migration and Seeds are ready. Just publish migrations and seeds and then migrate the db and run the seed command.
 
+## Do not hesitate to share your thought, create issue or send pull request.
+
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/devfaysal/laravel-bangladesh-geocode.svg?style=flat-square)](https://packagist.org/packages/devfaysal/laravel-bangladesh-geocode)
 [![Build Status](https://img.shields.io/travis/devfaysal/laravel-bangladesh-geocode/master.svg?style=flat-square)](https://travis-ci.org/devfaysal/laravel-bangladesh-geocode)
 [![Quality Score](https://img.shields.io/scrutinizer/g/devfaysal/laravel-bangladesh-geocode.svg?style=flat-square)](https://scrutinizer-ci.com/g/devfaysal/laravel-bangladesh-geocode)
