@@ -21,6 +21,12 @@ Publish Migration and Seeds
 ```bash
 php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider"
 
+php artisan migrate
+
+php artisan db:seed --class=DivisionSeeder
+php artisan db:seed --class=DistrictSeeder
+php artisan db:seed --class=UpazilaSeeder
+
 ```
 
 ## Usage
