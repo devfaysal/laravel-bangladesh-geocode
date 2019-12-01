@@ -28,6 +28,8 @@ php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeo
 
 php artisan migrate
 
+composer dump-autoload
+
 php artisan db:seed --class=DivisionSeeder
 php artisan db:seed --class=DistrictSeeder
 php artisan db:seed --class=UpazilaSeeder
