@@ -17,8 +17,7 @@ You can install the package via composer:
 ```bash
 composer require devfaysal/laravel-bangladesh-geocode
 ```
-//Only for laravel version older than 5.5
-add the service provider in your ```config/app.php``` file:
+Only for laravel version older than 5.5: add the service provider in your ```config/app.php``` file
 
 ```php
 'providers' => [
