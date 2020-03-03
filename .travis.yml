@@ -1,3 +1,5 @@
+dist: bionic
+
 language: php
 
 php:
@@ -8,15 +10,40 @@ php:
 
 env:
   matrix:
-    - COMPOSER_FLAGS="--prefer-lowest"
-    - COMPOSER_FLAGS=""
+    - setup=basic
+    - setup=stable
+    - setup=lowest
 
-before_script:
+before_install:
   - travis_retry composer self-update
-  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
+  - composer config discard-changes true
+before_script:
+  - if [[ $setup = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
+  - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
+  - if [[ $setup = 'lowest' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-lowest --prefer-stable; fi
 
 script:
   - vendor/bin/phpunit
+
+matrix:
+  include:
+    - php: 7.1
+      env: setup=basic phpunit=^7.0
+    - php: 7.2
+      env: setup=basic phpunit=^8.0
+    - php: 7.3
+      env: setup=basic phpunit=^9.0
+    - php: 7.2
+      env: setup=stable phpunit=^9.0
+    - php: 7.3
+      env: setup=stable phpunit=^9.0
+    - php: 7.4
+      env: setup=stable phpunit=^9.0
+    - php: 7.1
+      env: setup=lowest phpunit=^7.0
+    - php: 7.2
+      env: setup=lowest phpunit=^7.0
+  fast_finish: true
 
 after_script:
   - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
