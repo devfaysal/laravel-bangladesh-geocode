@@ -13,7 +13,7 @@ use Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider;
 
 class BangladeshGeocode extends TestCase
 {
-    use RefreshDatabase;
+    // use RefreshDatabase;
     /**
      * Setup the test environment.
      */
@@ -108,6 +108,20 @@ class BangladeshGeocode extends TestCase
 
         $upazila = Upazila::first();
         $this->assertInstanceOf(District::class, $upazila->district);
+    }
+
+    /** @test */
+    public function it_returns_all_divisions()
+    {
+        $divisions = Division::all();
+        $this->assertEquals(8, $divisions->count());
+    }
+    /** @test */
+    public function it_returns_all_districts()
+    {
+        $this->withoutExceptionHandling();
+        $districts = District::all();
+        $this->assertEquals(8, $districts->count());
     }
 
 }
