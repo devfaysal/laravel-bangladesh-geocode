@@ -8,10 +8,14 @@ php:
   - 7.3
   - 7.4
 
+env:
+  matrix:
+    - setup=basic
+    - setup=stable
+
 before_install:
   - travis_retry composer self-update
   - composer config discard-changes true
-  
 before_script:
   - if [[ $setup = 'basic' ]]; then travis_retry composer install --prefer-dist --no-interaction --no-suggest; fi
   - if [[ $setup = 'stable' ]]; then travis_retry composer update --prefer-dist --no-interaction --no-suggest --prefer-stable; fi
