@@ -20,7 +20,6 @@ class BangladeshGeocode extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->loadLaravelMigrations(['--database' => 'testing']);
     }
     /**
      * Get package providers.  At a minimum this is the package being tested, but also
@@ -39,46 +38,10 @@ class BangladeshGeocode extends TestCase
             BangladeshGeocodeServiceProvider::class,
         ];
     }
-    /** @test */
-    public function division_can_be_retrived()
-    {
-        //$this->withoutExceptionHandling();
-        $attributes = array('id' => '1','name' => 'Chattagram','bn_name' => 'চট্টগ্রাম','url' => 'www.chittagongdiv.gov.bd');
-        Division::create($attributes);
-        $this->assertDatabaseHas('divisions', $attributes);
-    }
-
-    /** @test */
-    public function district_can_be_retrived()
-    {
-        //$this->withoutExceptionHandling();
-        $attributes = array('id' => '1','division_id' => '1','name' => 'Comilla','bn_name' => 'কুমিল্লা','lat' => '23.4682747','lon' => '91.1788135','url' => 'www.comilla.gov.bd');
-        District::create($attributes);
-        $this->assertDatabaseHas('districts', $attributes);
-    }
-
-    /** @test */
-    public function upazila_can_be_retrived()
-    {
-        //$this->withoutExceptionHandling();
-        $attributes = array('id' => '1','district_id' => '1','name' => 'Debidwar','bn_name' => 'দেবিদ্বার','url' => 'debidwar.comilla.gov.bd');
-        Upazila::create($attributes);
-        $this->assertDatabaseHas('upazilas', $attributes);
-    }
 
     /** @test */
     public function division_has_many_districts_and_district_belongs_to_division()
     {
-        $attributes = array('id' => '1','name' => 'Chattagram','bn_name' => 'চট্টগ্রাম','url' => 'www.chittagongdiv.gov.bd');
-        Division::create($attributes);
-
-        $districts = array(
-            array('id' => '1','division_id' => '1','name' => 'Comilla','bn_name' => 'কুমিল্লা','lat' => '23.4682747','lon' => '91.1788135','url' => 'www.comilla.gov.bd'),
-            array('id' => '2','division_id' => '1','name' => 'Feni','bn_name' => 'ফেনী','lat' => '23.023231','lon' => '91.3840844','url' => 'www.feni.gov.bd'),
-            array('id' => '3','division_id' => '1','name' => 'Brahmanbaria','bn_name' => 'ব্রাহ্মণবাড়িয়া','lat' => '23.9570904','lon' => '91.1119286','url' => 'www.brahmanbaria.gov.bd'),
-        );
-        DB::table('districts')->insert($districts);
-
         $division = Division::first();
 
         $this->assertInstanceOf(District::class, $division->districts->first());
@@ -91,16 +54,6 @@ class BangladeshGeocode extends TestCase
     /** @test */
     public function district_has_many_upazilas_and_upazila_belongs_to_district()
     {
-        $attributes = array('id' => '1','division_id' => '1','name' => 'Comilla','bn_name' => 'কুমিল্লা','lat' => '23.4682747','lon' => '91.1788135','url' => 'www.comilla.gov.bd');
-        District::create($attributes);
-
-        $upazilas = array(
-            array('id' => '1','district_id' => '1','name' => 'Debidwar','bn_name' => 'দেবিদ্বার','url' => 'debidwar.comilla.gov.bd'),
-            array('id' => '2','district_id' => '1','name' => 'Barura','bn_name' => 'বরুড়া','url' => 'barura.comilla.gov.bd'),
-            array('id' => '3','district_id' => '1','name' => 'Brahmanpara','bn_name' => 'ব্রাহ্মণপাড়া','url' => 'brahmanpara.comilla.gov.bd'),
-        );
-        DB::table('upazilas')->insert($upazilas);
-
         $district = District::first();
 
         $this->assertInstanceOf(Upazila::class, $district->upazilas->first());
@@ -116,12 +69,19 @@ class BangladeshGeocode extends TestCase
         $divisions = Division::all();
         $this->assertEquals(8, $divisions->count());
     }
+
     /** @test */
     public function it_returns_all_districts()
     {
-        $this->withoutExceptionHandling();
         $districts = District::all();
-        $this->assertEquals(8, $districts->count());
+        $this->assertEquals(64, $districts->count());
+    }
+
+    /** @test */
+    public function it_returns_all_upazilas()
+    {
+        $upazilas = Upazila::all();
+        $this->assertEquals(491, $upazilas->count());
     }
 
 }

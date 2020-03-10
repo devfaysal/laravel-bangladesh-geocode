@@ -2,11 +2,12 @@
 
 namespace Devfaysal\BangladeshGeocode\Models;
 
+use Sushi\Sushi;
 use Illuminate\Database\Eloquent\Model;
 
 class District extends Model
 {
-    use \Sushi\Sushi;
+    use Sushi;
 
     protected $guarded = [];
     
