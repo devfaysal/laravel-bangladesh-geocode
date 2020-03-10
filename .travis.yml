@@ -23,19 +23,5 @@ before_script:
 script:
   - vendor/bin/phpunit
 
-matrix:
-  include:
-    - php: 7.2
-      env: setup=basic phpunit=^8.0
-    - php: 7.3
-      env: setup=stable phpunit=^8.0
-    - php: 7.2
-      env: setup=stable phpunit=^9.0
-    - php: 7.3
-      env: setup=stable phpunit=^9.0
-    - php: 7.4
-      env: setup=stable phpunit=^9.0
-  fast_finish: true
-
 after_script:
   - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
