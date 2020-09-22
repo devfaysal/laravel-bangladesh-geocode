@@ -3,8 +3,6 @@ dist: bionic
 language: php
 
 php:
-  - 7.1
-  - 7.2
   - 7.3
   - 7.4
 
@@ -26,22 +24,12 @@ script:
 
 matrix:
   include:
-    - php: 7.1
-      env: setup=basic phpunit=^7.0
-    - php: 7.2
-      env: setup=basic phpunit=^8.0
     - php: 7.3
       env: setup=basic phpunit=^9.0
-    - php: 7.2
-      env: setup=stable phpunit=^9.0
     - php: 7.3
       env: setup=stable phpunit=^9.0
     - php: 7.4
       env: setup=stable phpunit=^9.0
-    - php: 7.1
-      env: setup=lowest phpunit=^7.0
-    - php: 7.2
-      env: setup=lowest phpunit=^7.0
   fast_finish: true
 
 after_script:
