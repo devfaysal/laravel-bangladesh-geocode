@@ -1,6 +1,6 @@
 # Bangladesh Geocode
 Division, District and Upazila data of Bangladesh for Laravel application.
-Migration and Seeds are ready. Just publish migrations and seeds and then migrate the db and run the seed command.
+Migration and seeders are ready. Just publish migrations and seeders and then migrate the db and run the seed command.
 
 ## Do not hesitate to share your thought, create issue or send pull request.
 
@@ -9,6 +9,17 @@ Migration and Seeds are ready. Just publish migrations and seeds and then migrat
 [![Quality Score](https://img.shields.io/scrutinizer/g/devfaysal/laravel-bangladesh-geocode.svg?style=flat-square)](https://scrutinizer-ci.com/g/devfaysal/laravel-bangladesh-geocode)
 [![Total Downloads](https://img.shields.io/packagist/dt/devfaysal/laravel-bangladesh-geocode.svg?style=flat-square)](https://packagist.org/packages/devfaysal/laravel-bangladesh-geocode)
 
+## Laravel Version Compatibility
+
+ Laravel  | Package
+:---------|:----------
+ 5.5.x    | 0.4.x
+ 5.6.x    | 0.4.x
+ 5.7.x    | 0.4.x
+ 5.8.x    | 0.4.x
+ 6.x.x    | 0.4.x
+ 7.x.x    | 0.4.x
+ 8.x.x    | 0.5.x
 
 ## Installation
 
@@ -18,12 +29,12 @@ You can install the package via composer:
 composer require devfaysal/laravel-bangladesh-geocode
 ```
 
-Publish Migration and Seeds
+Publish Migration and seeders
 
 ```bash
 php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider"
 
-#If you need to overrride previously published migrationa and seeds
+#If you need to overrride previously published migrationa and seeders
 php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider" --force
 
 php artisan migrate

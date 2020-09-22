@@ -26,8 +26,8 @@ class BangladeshGeocodeServiceProvider extends ServiceProvider
                 __DIR__.'/../database/migrations' => database_path('migrations'),
             ], 'bangladesh-geocode-migrations');
             $this->publishes([
-                __DIR__.'/../database/seeds' => database_path('seeds'),
-            ], 'bangladesh-geocode-seeds');
+                __DIR__.'/../database/seeders' => database_path('seeders'),
+            ], 'bangladesh-geocode-seeders');
 
             // Registering package commands.
             // $this->commands([]);
