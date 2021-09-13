@@ -25,26 +25,12 @@ Migration and seeders are ready. Just publish migrations and seeders and then mi
 
 You can install the package via composer:
 
-```bash
+``` bash
 composer require devfaysal/laravel-bangladesh-geocode
 ```
-
-Publish Migration and seeders
-
-```bash
-php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider"
-
-#If you need to overrride previously published migrationa and seeders
-php artisan vendor:publish --provider="Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider" --force
-
-php artisan migrate
-
-composer dump-autoload
-
-php artisan db:seed --class=DivisionSeeder
-php artisan db:seed --class=DistrictSeeder
-php artisan db:seed --class=UpazilaSeeder
-
+Setup everything with just running one artisan command
+``` bash
+php artisan BangladeshGeocode:setup
 ```
 
 ## Usage
