@@ -1,5 +1,4 @@
-name: PHP Composer
-
+name: Run Tests
 on:
   push:
     branches: [ master ]
