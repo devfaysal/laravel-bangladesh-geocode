@@ -19,7 +19,7 @@ Migration and seeders are ready. Just publish migrations and seeders and then mi
  5.8.x    | 0.4.x
  6.x.x    | 0.4.x
  7.x.x    | 0.4.x
- 8.x.x    | 0.5.x
+ 8.x.x    | 1.0.x
 
 ## Installation
 
