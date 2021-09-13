@@ -2,7 +2,7 @@
 
 namespace Devfaysal\BangladeshGeocode;
 
-use Devfaysal\BangladeshGeocode\Commands\InstallCommand;
+use Devfaysal\BangladeshGeocode\Commands\SetupCommand;
 use Illuminate\Support\ServiceProvider;
 
 class BangladeshGeocodeServiceProvider extends ServiceProvider
@@ -26,7 +26,7 @@ class BangladeshGeocodeServiceProvider extends ServiceProvider
 
             // Registering package commands.
             $this->commands([
-                InstallCommand::class
+                SetupCommand::class
             ]);
         }
     }
