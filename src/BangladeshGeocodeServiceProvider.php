@@ -2,6 +2,7 @@
 
 namespace Devfaysal\BangladeshGeocode;
 
+use Devfaysal\BangladeshGeocode\Commands\InstallCommand;
 use Illuminate\Support\ServiceProvider;
 
 class BangladeshGeocodeServiceProvider extends ServiceProvider
@@ -15,22 +16,18 @@ class BangladeshGeocodeServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
 
-        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-
         if ($this->app->runningInConsole()) {
-            // $this->publishes([
-            //     __DIR__.'/../config/config.php' => config_path('bangladesh-geocode.php'),
-            // ], 'config');
-
             $this->publishes([
                 __DIR__.'/../database/migrations' => database_path('migrations'),
             ], 'bangladesh-geocode-migrations');
             $this->publishes([
-                __DIR__.'/../database/seeders' => database_path('seeders'),
+                __DIR__.'/Seeders' => database_path('seeders'),
             ], 'bangladesh-geocode-seeders');
 
             // Registering package commands.
-            // $this->commands([]);
+            $this->commands([
+                InstallCommand::class
+            ]);
         }
     }
 

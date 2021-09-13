@@ -10,6 +10,11 @@ class Upazila extends Model
 
     public function district()
     {
-        return $this->belongsTo(District::Class);
+        return $this->belongsTo(District::class);
+    }
+
+    public function unions()
+    {
+        return $this->hasMany(Union::class);
     }
 }

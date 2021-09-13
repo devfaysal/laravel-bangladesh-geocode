@@ -2,14 +2,15 @@
 
 namespace Devfaysal\BangladeshGeocode\Tests;
 
-use Orchestra\Testbench\TestCase;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Eloquent\Collection;
-use Devfaysal\BangladeshGeocode\Models\Upazila;
+use Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider;
 use Devfaysal\BangladeshGeocode\Models\District;
 use Devfaysal\BangladeshGeocode\Models\Division;
+use Devfaysal\BangladeshGeocode\Models\Upazila;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\DB;
+use Orchestra\Testbench\TestCase;
 
 class BangladeshGeocode extends TestCase
 {
@@ -21,6 +22,10 @@ class BangladeshGeocode extends TestCase
     {
         parent::setUp();
         $this->loadLaravelMigrations(['--database' => 'testing']);
+    }
+    protected function defineDatabaseMigrations()
+    {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
     /**
      * Get package providers.  At a minimum this is the package being tested, but also
@@ -108,6 +113,14 @@ class BangladeshGeocode extends TestCase
 
         $upazila = Upazila::first();
         $this->assertInstanceOf(District::class, $upazila->district);
+    }
+
+    /** @test */
+    public function install_command_is_working_correctly()
+    {
+        $this->artisan('BangladeshGeocode:install')
+        ->expectsOutput('Installed Successfully')
+        ->assertExitCode(0);
     }
 
 }
