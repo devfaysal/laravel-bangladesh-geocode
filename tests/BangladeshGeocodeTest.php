@@ -116,10 +116,10 @@ class BangladeshGeocode extends TestCase
     }
 
     /** @test */
-    public function install_command_is_working_correctly()
+    public function setup_command_is_working_correctly()
     {
-        $this->artisan('BangladeshGeocode:install')
-        ->expectsOutput('Installed Successfully')
+        $this->artisan('BangladeshGeocode:setup')
+        ->expectsOutput('Setup Successfull')
         ->assertExitCode(0);
     }
 

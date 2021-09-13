@@ -38,7 +38,7 @@ class SetupCommand extends Command
      */
     public function handle()
     {
-        $this->info('Installing Laravel Bangladesh Geocode..');
+        $this->info('Setting up Laravel Bangladesh Geocode..');
         $this->info('Database migrating..');
         Artisan::call('migrate', ['--path' => 'vendor/devfaysal/laravel-bangladesh-geocode/database/migrations']);
         $this->info('Database successfully migrated');
@@ -54,6 +54,6 @@ class SetupCommand extends Command
 
         $this->info('Seeding Unions..');
         Artisan::call('db:seed', array('--class' => 'Devfaysal\BangladeshGeocode\Seeders\UnionSeeder'));
-        $this->info('Installed Successfully');
+        $this->info('Setup Successfull');
     }
 }
