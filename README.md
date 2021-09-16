@@ -1,6 +1,6 @@
 # Bangladesh Geocode
-Division, District and Upazila data of Bangladesh for Laravel application.
-Migration and seeders are ready. Just publish migrations and seeders and then migrate the db and run the seed command.
+Division, District, Upazila and Union data of Bangladesh for Laravel application.
+One artisan command and you are all set.
 
 ## Do not hesitate to share your thought, create issue or send pull request.
 
@@ -44,24 +44,23 @@ $divisions = Division::all();
 $districts = District::all();
 $upazilas = Upazila::all();
 
+$division = Division::where('name', 'Dhaka);
+$allDistrictsOfDhaka = $division->districts;
+
 $division = Division::find(1);
 $districts = $division->districts;
 
 $district = District::find(1);
 $upazilas = $district->upazilas;
 
-//Use any Laravel model functions...
+//Use any Laravel (eluquent) model functions...
 ```
 
 ### Testing
-
+The package is well supported by automated test.
 ``` bash
 composer test
 ```
-
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
 ## Contributing
 
