@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Devfaysal\BangladeshGeocode\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
