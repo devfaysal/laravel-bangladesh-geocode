@@ -20,6 +20,7 @@ One artisan command and you are all set.
  6.x.x    | 0.4.x
  7.x.x    | 0.4.x
  8.x.x    | 1.0.x
+ 9.x.x    | 2.x.x
 
 ## Installation
 
