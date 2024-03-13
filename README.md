@@ -22,6 +22,7 @@ One artisan command and you are all set.
  8.x.x    | 1.0.x
  9.x.x    | 2.x.x
  10.x.x    | 2.x.x
+ 11.x.x    | 2.x.x
 
 ## Installation
 
