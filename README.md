@@ -47,7 +47,7 @@ $divisions = Division::all();
 $districts = District::all();
 $upazilas = Upazila::all();
 
-$division = Division::where('name', 'Dhaka);
+$division = Division::where('name', 'Dhaka');
 $allDistrictsOfDhaka = $division->districts;
 
 $division = Division::find(1);
