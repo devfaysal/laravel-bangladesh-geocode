@@ -504,7 +504,11 @@ class UpazilaSeeder extends Seeder
             array('id' => '488','district_id' => '64','name' => 'Kalmakanda','bn_name' => 'কলমাকান্দা','url' => 'kalmakanda.netrokona.gov.bd'),
             array('id' => '489','district_id' => '64','name' => 'Mohongonj','bn_name' => 'মোহনগঞ্জ','url' => 'mohongonj.netrokona.gov.bd'),
             array('id' => '490','district_id' => '64','name' => 'Purbadhala','bn_name' => 'পূর্বধলা','url' => 'purbadhala.netrokona.gov.bd'),
-            array('id' => '491','district_id' => '64','name' => 'Netrokona Sadar','bn_name' => 'নেত্রকোণা সদর','url' => 'netrokonasadar.netrokona.gov.bd')
+            array('id' => '491','district_id' => '64','name' => 'Netrokona Sadar','bn_name' => 'নেত্রকোণা সদর','url' => 'netrokonasadar.netrokona.gov.bd'),
+            array('id' => '492', 'district_id' => '9', 'name' => 'Eidgaon', 'bn_name' => 'ঈদগাঁও', 'url' => 'eidgaon.coxsbazar.gov.bd'),
+            array('id' => '493', 'district_id' => '39', 'name' => 'Madhyanagar', 'bn_name' => 'মধ্যনগর', 'url' => 'madhyanagar.sunamganj.gov.bd'),
+            array('id' => '494', 'district_id' => '50', 'name' => 'Dasar', 'bn_name' => 'ডাসার', 'url' => 'dasar.madaripur.gov.bd'),
+            array('id' => '495', 'district_id' => '38', 'name' => 'Shayestaganj', 'bn_name' => 'শায়েস্তাগঞ্জ', 'url' => 'shayestaganj.habiganj.gov.bd'),
         );
 
         DB::table('upazilas')->insert($upazilas);

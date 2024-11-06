@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Orchestra\Testbench\TestCase;
 
-class BangladeshGeocode extends TestCase
+class BangladeshGeocodeTest extends TestCase
 {
     use RefreshDatabase;
     /**
