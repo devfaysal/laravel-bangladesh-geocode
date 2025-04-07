@@ -48,7 +48,6 @@ class AddNewRecordsCommand extends Command
             ['id' => '494', 'district_id' => '50', 'name' => 'Dasar', 'bn_name' => 'ডাসার', 'url' => 'dasar.madaripur.gov.bd'],
             ['id' => '495', 'district_id' => '38', 'name' => 'Shayestaganj', 'bn_name' => 'শায়েস্তাগঞ্জ', 'url' => 'shayestaganj.habiganj.gov.bd'],
         ];
-        DB::table('upazilas')->insert($newUpazilas);
         foreach ($newUpazilas as $upazila) {
             Upazila::updateOrCreate(
                 ['id' => $upazila['id']],
