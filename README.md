@@ -23,6 +23,14 @@ One artisan command and you are all set.
  9.x.x    | 2.x.x
  10.x.x    | 2.x.x
  11.x.x    | 2.x.x
+ 12.x.x    | 2.x.x
+
+## Update (New Upazila and Union added in v2.3.0)
+Run this command to add new records to existing application safely 
+``` bash
+php artisan BangladeshGeocode:addnew
+```
+
 
 ## Installation
 
