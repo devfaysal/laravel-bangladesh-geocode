@@ -47,6 +47,8 @@ class AddNewRecordsCommand extends Command
             ['id' => '493', 'district_id' => '39', 'name' => 'Madhyanagar', 'bn_name' => 'মধ্যনগর', 'url' => 'madhyanagar.sunamganj.gov.bd'],
             ['id' => '494', 'district_id' => '50', 'name' => 'Dasar', 'bn_name' => 'ডাসার', 'url' => 'dasar.madaripur.gov.bd'],
             ['id' => '495', 'district_id' => '38', 'name' => 'Shayestaganj', 'bn_name' => 'শায়েস্তাগঞ্জ', 'url' => 'shayestaganj.habiganj.gov.bd'],
+            ['id' => '301', 'district_id' => '39', 'name' => 'Shantiganj', 'bn_name' => 'শান্তিগঞ্জ', 'url' => 'shantiganj.sunamganj.gov.bd'],
+            ['id' => '260', 'district_id' => '34', 'name' => 'Borhan Uddin', 'bn_name' => 'বোরহান উদ্দিন', 'url' => 'borhanuddin.bhola.gov.bd'],
         ];
         foreach ($newUpazilas as $upazila) {
             Upazila::updateOrCreate(
