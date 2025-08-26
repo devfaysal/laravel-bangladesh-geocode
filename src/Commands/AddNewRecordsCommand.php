@@ -100,6 +100,12 @@ class AddNewRecordsCommand extends Command
 
                 ['id' => '4544', 'upazila_id' => '46', 'name' => 'Horoni', 'bn_name' => 'হরণী', 'url' => 'horoniup.noakhali.gov.bd'],
                 ['id' => '4545', 'upazila_id' => '46', 'name' => 'Chanondi', 'bn_name' => 'চানন্দী', 'url' => 'chanondiup.noakhali.gov.bd'],
+
+                ['id' => '4546', 'upazila_id' => '195', 'name' => 'KDK', 'bn_name' => 'কেডিকে', 'url' => 'kdkup.chuadanga.gov.bd'],
+                ['id' => '4547', 'upazila_id' => '195', 'name' => 'Monohorpur', 'bn_name' => 'মনোহরপুর', 'url' => 'monohorpurup.chuadanga.gov.bd'],
+
+                ['id' => '4548', 'upazila_id' => '187', 'name' => 'Baradi', 'bn_name' => 'বারাদী', 'url' => 'baradiup.meherpur.gov.bd'],
+                ['id' => '4549', 'upazila_id' => '187', 'name' => 'Shyampur', 'bn_name' => 'শ্যামপুর', 'url' => 'baradiup.meherpur.gov.bd'],
             ];
         foreach($unions as $union){
             Union::updateOrCreate(
