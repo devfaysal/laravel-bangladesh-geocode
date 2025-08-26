@@ -104,7 +104,7 @@ class AddNewRecordsCommand extends Command
                 ['id' => '4546', 'upazila_id' => '195', 'name' => 'KDK', 'bn_name' => 'কেডিকে', 'url' => 'kdkup.chuadanga.gov.bd'],
                 ['id' => '4547', 'upazila_id' => '195', 'name' => 'Monohorpur', 'bn_name' => 'মনোহরপুর', 'url' => 'monohorpurup.chuadanga.gov.bd'],
 
-                ['id' => '4548', 'upazila_id' => '187', 'name' => 'Monohorpur', 'bn_name' => 'বারাদী', 'url' => 'baradiup.meherpur.gov.bd'],
+                ['id' => '4548', 'upazila_id' => '187', 'name' => 'Baradi', 'bn_name' => 'বারাদী', 'url' => 'baradiup.meherpur.gov.bd'],
                 ['id' => '4549', 'upazila_id' => '187', 'name' => 'Shyampur', 'bn_name' => 'শ্যামপুর', 'url' => 'baradiup.meherpur.gov.bd'],
             ];
         foreach($unions as $union){
