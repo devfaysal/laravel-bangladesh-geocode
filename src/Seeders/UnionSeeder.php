@@ -3199,7 +3199,7 @@ class UnionSeeder extends Seeder
             array('id' => '3174', 'upazila_id' => '354', 'name' => 'Pirijpur', 'bn_name' => 'পিরিজপুর', 'url' => 'pirijpurup.kishoreganj.gov.bd'),
             array('id' => '3175', 'upazila_id' => '354', 'name' => 'Gazirchar', 'bn_name' => 'গাজীরচর', 'url' => 'gazircharup.kishoreganj.gov.bd'),
             array('id' => '3176', 'upazila_id' => '354', 'name' => 'Hilochia', 'bn_name' => 'হিলচিয়া', 'url' => 'hilochiaup.kishoreganj.gov.bd'),
-            array('id' => '3177', 'upazila_id' => '354', 'name' => 'Maijchar9', 'bn_name' => 'মাইজচর', 'url' => 'maijchar9up.kishoreganj.gov.bd'),
+            array('id' => '3177', 'upazila_id' => '354', 'name' => 'Maijchar', 'bn_name' => 'মাইজচর', 'url' => 'maijchar9up.kishoreganj.gov.bd'),
             array('id' => '3178', 'upazila_id' => '354', 'name' => 'Homypur', 'bn_name' => 'হুমাইপর', 'url' => 'homypurup.kishoreganj.gov.bd'),
             array('id' => '3179', 'upazila_id' => '354', 'name' => 'Halimpur', 'bn_name' => 'হালিমপুর', 'url' => 'halimpurup.kishoreganj.gov.bd'),
             array('id' => '3180', 'upazila_id' => '354', 'name' => 'Sararchar', 'bn_name' => 'সরারচর', 'url' => 'sararcharup.kishoreganj.gov.bd'),
