@@ -348,7 +348,6 @@ class PourashavaSeeder extends Seeder
             ['id' => '5330', 'upazila_id' => '446', 'name' => 'Haragach Pourashava', 'bn_name' => 'হারাগাছ পৌরসভা', 'url' => 'haragachpourashava.gov.bd'],
         ];
 
-        DB::table('unions')->insert($pourashavas);
         foreach ($pourashavas as $pourashava) {
             Union::updateOrCreate(
                 ['id' => $pourashava['id']],
