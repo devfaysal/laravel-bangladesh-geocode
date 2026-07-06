@@ -44,19 +44,21 @@ class SetupCommand extends Command
         $this->info('Database successfully migrated');
 
         $this->info('Seeding Divisions..');
-        Artisan::call('db:seed', array('--class' => 'Devfaysal\BangladeshGeocode\Seeders\DivisionSeeder'));
+        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\DivisionSeeder']);
 
         $this->info('Seeding Districts..');
-        Artisan::call('db:seed', array('--class' => 'Devfaysal\BangladeshGeocode\Seeders\DistrictSeeder'));
+        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\DistrictSeeder']);
 
         $this->info('Seeding Upazilas..');
-        Artisan::call('db:seed', array('--class' => 'Devfaysal\BangladeshGeocode\Seeders\UpazilaSeeder'));
+        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\UpazilaSeeder']);
 
         $this->info('Seeding Unions..');
-        Artisan::call('db:seed', array('--class' => 'Devfaysal\BangladeshGeocode\Seeders\UnionSeeder'));
+        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\UnionSeeder']);
 
         $this->info('Publishing migrations..');
-        Artisan::call('vendor:publish', array('--provider' => 'Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider'));
+        Artisan::call('vendor:publish', ['--provider' => 'Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider']);
         $this->info('Setup Successfull');
+
+        return 0;
     }
 }

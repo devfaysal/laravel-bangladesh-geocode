@@ -1,0 +1,14 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - src/
+        - tests/
+
+    # Level 5 is a good balance for package analysis
+    level: 5
+
+    ignoreErrors:
+        - '#Access to an undefined property Devfaysal\\BangladeshGeocode\\Models\\.*#'
