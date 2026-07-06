@@ -1,4 +1,5 @@
 # Bangladesh Geocode
+
 Division, District, Upazila and Union data of Bangladesh for Laravel application.
 One artisan command and you are all set.
 
@@ -11,43 +12,44 @@ One artisan command and you are all set.
 
 ## Laravel Version Compatibility
 
- Laravel  | Package
-:---------|:----------
- 5.5.x    | 0.4.x
- 5.6.x    | 0.4.x
- 5.7.x    | 0.4.x
- 5.8.x    | 0.4.x
- 6.x.x    | 0.4.x
- 7.x.x    | 0.4.x
- 8.x.x    | 1.0.x
- 9.x.x    | 2.x.x
- 10.x.x    | 2.x.x
- 11.x.x    | 2.x.x
- 12.x.x    | 2.x.x
- 13.x.x    | 2.x.x
+| Laravel | Package |
+| :------ | :------ |
+| 5.5.x - 7.x.x | 0.4.x |
+| 8.x.x   | 1.0.x   |
+| 9.x.x - 11.x.x | 2.0.x - 2.7.x |
+| 12.x.x - 13.x.x | 2.8.x |
 
 ## Update (New Upazila and Union added in v2.3.0)
-Run this command to add new records to existing application safely 
-``` bash
+
+Run this command to add new records to existing application safely
+
+```bash
 php artisan BangladeshGeocode:addnew
 ```
-
 
 ## Installation
 
 You can install the package via composer:
 
-``` bash
+```bash
 composer require devfaysal/laravel-bangladesh-geocode
 ```
+
 Setup everything with just running one artisan command
-``` bash
+
+```bash
 php artisan BangladeshGeocode:setup
+```
+
+If you want to add Pourashava with Unions
+
+```bash
+php artisan BangladeshGeocode:addpourashava
 ```
 
 ## Usage
 
-``` php
+```php
 use Devfaysal\BangladeshGeocode\Models\Division;
 use Devfaysal\BangladeshGeocode\Models\District;
 use Devfaysal\BangladeshGeocode\Models\Upazila;
@@ -69,8 +71,10 @@ $upazilas = $district->upazilas;
 ```
 
 ### Testing
+
 The package is well supported by automated test.
-``` bash
+
+```bash
 composer test
 ```
 
