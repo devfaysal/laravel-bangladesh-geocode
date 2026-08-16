@@ -5,6 +5,7 @@ namespace Devfaysal\BangladeshGeocode\Tests;
 use Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider;
 use Devfaysal\BangladeshGeocode\Models\District;
 use Devfaysal\BangladeshGeocode\Models\Division;
+use Devfaysal\BangladeshGeocode\Models\PostOffice;
 use Devfaysal\BangladeshGeocode\Models\Union;
 use Devfaysal\BangladeshGeocode\Models\Upazila;
 use Illuminate\Database\Eloquent\Collection;
@@ -139,6 +140,32 @@ class BangladeshGeocodeTest extends TestCase
         $this->artisan('BangladeshGeocode:setup')
             ->expectsOutput('Setup Successfull')
             ->assertExitCode(0);
+
+        $this->assertDatabaseCount('post_offices', 1357);
+    }
+
+    public function test_district_has_many_post_offices_and_post_office_belongs_to_district()
+    {
+        $district = District::create([
+            'id' => '1',
+            'division_id' => '1',
+            'name' => 'Comilla',
+            'bn_name' => 'কুমিল্লা',
+        ]);
+
+        $postOffice = PostOffice::create([
+            'id' => '1',
+            'district_id' => '1',
+            'thana' => 'Demra',
+            'thana_bn' => 'ডেমরা',
+            'name' => 'Demra',
+            'bn_name' => 'ডেমরা',
+            'post_code' => '1360',
+        ]);
+
+        $this->assertInstanceOf(PostOffice::class, $district->postOffices->first());
+        $this->assertInstanceOf(Collection::class, $district->postOffices);
+        $this->assertInstanceOf(District::class, $postOffice->district);
     }
 
     public function test_add_pourashava_command_is_working_correctly()

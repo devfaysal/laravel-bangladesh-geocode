@@ -17,4 +17,9 @@ class District extends Model
     {
         return $this->hasMany(Upazila::class);
     }
+
+    public function postOffices()
+    {
+        return $this->hasMany(PostOffice::class);
+    }
 }

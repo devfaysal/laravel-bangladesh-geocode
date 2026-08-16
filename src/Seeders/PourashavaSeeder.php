@@ -4,7 +4,6 @@ namespace Devfaysal\BangladeshGeocode\Seeders;
 
 use Devfaysal\BangladeshGeocode\Models\Union;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class PourashavaSeeder extends Seeder
 {

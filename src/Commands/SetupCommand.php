@@ -55,6 +55,9 @@ class SetupCommand extends Command
         $this->info('Seeding Unions..');
         Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\UnionSeeder']);
 
+        $this->info('Seeding Post Offices..');
+        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\PostOfficeSeeder']);
+
         $this->info('Publishing migrations..');
         Artisan::call('vendor:publish', ['--provider' => 'Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider']);
         $this->info('Setup Successfull');
