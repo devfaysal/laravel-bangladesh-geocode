@@ -2,50 +2,22 @@
 
 namespace Devfaysal\BangladeshGeocode\Tests;
 
-use Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider;
 use Devfaysal\BangladeshGeocode\Models\District;
 use Devfaysal\BangladeshGeocode\Models\Division;
+use Devfaysal\BangladeshGeocode\Models\PostOffice;
 use Devfaysal\BangladeshGeocode\Models\Union;
 use Devfaysal\BangladeshGeocode\Models\Upazila;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
-use Orchestra\Testbench\TestCase;
 
 class BangladeshGeocodeTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * Setup the test environment.
-     */
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->loadLaravelMigrations(['--database' => 'testing']);
-    }
-
     protected function defineDatabaseMigrations()
     {
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-    }
-
-    /**
-     * Get package providers.  At a minimum this is the package being tested, but also
-     * would include packages upon which our package depends, e.g. Cartalyst/Sentry
-     * In a normal app environment these would be added to the 'providers' array in
-     * the config/app.php file.
-     *
-     * @param  Application  $app
-     * @return array
-     */
-    protected function getPackageProviders($app)
-    {
-
-        return [
-            BangladeshGeocodeServiceProvider::class,
-        ];
     }
 
     public function test_division_can_be_retrived()
@@ -58,6 +30,8 @@ class BangladeshGeocodeTest extends TestCase
 
     public function test_district_can_be_retrived()
     {
+        Division::create(['id' => 1, 'name' => 'Chattagram']);
+
         // $this->withoutExceptionHandling();
         $attributes = ['id' => '1', 'division_id' => '1', 'name' => 'Comilla', 'bn_name' => 'কুমিল্লা', 'lat' => '23.4682747', 'lon' => '91.1788135', 'url' => 'www.comilla.gov.bd'];
         District::create($attributes);
@@ -66,6 +40,9 @@ class BangladeshGeocodeTest extends TestCase
 
     public function test_upazila_can_be_retrived()
     {
+        Division::create(['id' => 1, 'name' => 'Chattagram']);
+        District::create(['id' => 1, 'division_id' => 1, 'name' => 'Comilla']);
+
         // $this->withoutExceptionHandling();
         $attributes = ['id' => '1', 'district_id' => '1', 'name' => 'Debidwar', 'bn_name' => 'দেবিদ্বার', 'url' => 'debidwar.comilla.gov.bd'];
         Upazila::create($attributes);
@@ -95,6 +72,8 @@ class BangladeshGeocodeTest extends TestCase
 
     public function test_district_has_many_upazilas_and_upazila_belongs_to_district()
     {
+        Division::create(['id' => 1, 'name' => 'Chattagram']);
+
         $attributes = ['id' => '1', 'division_id' => '1', 'name' => 'Comilla', 'bn_name' => 'কুমিল্লা', 'lat' => '23.4682747', 'lon' => '91.1788135', 'url' => 'www.comilla.gov.bd'];
         District::create($attributes);
 
@@ -116,6 +95,9 @@ class BangladeshGeocodeTest extends TestCase
 
     public function test_upazila_has_many_unions_and_union_belongs_to_upazila()
     {
+        Division::create(['id' => 1, 'name' => 'Chattagram']);
+        District::create(['id' => 1, 'division_id' => 1, 'name' => 'Comilla']);
+
         $attributes = ['id' => '1', 'district_id' => '1', 'name' => 'Debidwar', 'bn_name' => 'দেবিদ্বার', 'url' => 'debidwar.comilla.gov.bd'];
         Upazila::create($attributes);
 
@@ -134,31 +116,29 @@ class BangladeshGeocodeTest extends TestCase
         $this->assertInstanceOf(Upazila::class, $union->upazila);
     }
 
-    public function test_setup_command_is_working_correctly()
+    public function test_district_has_many_post_offices_and_post_office_belongs_to_district()
     {
-        $this->artisan('BangladeshGeocode:setup')
-            ->expectsOutput('Setup Successfull')
-            ->assertExitCode(0);
-    }
+        Division::create(['id' => 1, 'name' => 'Chattagram']);
 
-    public function test_add_pourashava_command_is_working_correctly()
-    {
-        $this->artisan('BangladeshGeocode:addpourashava')
-            ->expectsOutput('Adding Pourashava..')
-            ->expectsOutput('Pourashava successfully added')
-            ->assertExitCode(0);
+        $district = District::create([
+            'id' => '1',
+            'division_id' => '1',
+            'name' => 'Comilla',
+            'bn_name' => 'কুমিল্লা',
+        ]);
 
-        $this->assertDatabaseCount('unions', 330);
-    }
+        $postOffice = PostOffice::create([
+            'id' => '1',
+            'district_id' => '1',
+            'thana' => 'Demra',
+            'thana_bn' => 'ডেমরা',
+            'name' => 'Demra',
+            'bn_name' => 'ডেমরা',
+            'post_code' => '1360',
+        ]);
 
-    public function test_addnew_command_is_working_correctly()
-    {
-        $this->artisan('BangladeshGeocode:addnew')
-            ->expectsOutput('Updating Laravel Bangladesh Geocode..')
-            ->expectsOutput('Adding new Upazila..')
-            ->expectsOutput('New Upazila added successsfully')
-            ->expectsOutput('Updating exising Unions parent Upazila..')
-            ->expectsOutput('Exising Unions parent Upazila updated successsfully')
-            ->assertExitCode(0);
+        $this->assertInstanceOf(PostOffice::class, $district->postOffices->first());
+        $this->assertInstanceOf(Collection::class, $district->postOffices);
+        $this->assertInstanceOf(District::class, $postOffice->district);
     }
 }

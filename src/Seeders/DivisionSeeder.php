@@ -25,7 +25,7 @@ class DivisionSeeder extends Seeder
             ['id' => '8', 'name' => 'Mymensingh', 'bn_name' => 'ময়মনসিংহ', 'url' => 'www.mymensinghdiv.gov.bd'],
         ];
 
-        DB::table('divisions')->insert($divisions);
+        DB::table('divisions')->upsert($divisions, ['id'], ['name', 'bn_name', 'url']);
 
     }
 }

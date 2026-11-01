@@ -46,7 +46,7 @@ class UpazilaSeeder extends Seeder
             ['id' => '29', 'district_id' => '3', 'name' => 'Akhaura', 'bn_name' => 'আখাউড়া', 'url' => 'akhaura.brahmanbaria.gov.bd'],
             ['id' => '30', 'district_id' => '3', 'name' => 'Nabinagar', 'bn_name' => 'নবীনগর', 'url' => 'nabinagar.brahmanbaria.gov.bd'],
             ['id' => '31', 'district_id' => '3', 'name' => 'Bancharampur', 'bn_name' => 'বাঞ্ছারামপুর', 'url' => 'bancharampur.brahmanbaria.gov.bd'],
-            ['id' => '32', 'district_id' => '3', 'name' => 'Bijoynagar', 'bn_name' => 'বিজয়নগর', 'url' => 'bijoynagar.brahmanbaria.gov.bd    '],
+            ['id' => '32', 'district_id' => '3', 'name' => 'Bijoynagar', 'bn_name' => 'বিজয়নগর', 'url' => 'bijoynagar.brahmanbaria.gov.bd'],
             ['id' => '33', 'district_id' => '4', 'name' => 'Rangamati Sadar', 'bn_name' => 'রাঙ্গামাটি সদর', 'url' => 'sadar.rangamati.gov.bd'],
             ['id' => '34', 'district_id' => '4', 'name' => 'Kaptai', 'bn_name' => 'কাপ্তাই', 'url' => 'kaptai.rangamati.gov.bd'],
             ['id' => '35', 'district_id' => '4', 'name' => 'Kawkhali', 'bn_name' => 'কাউখালী', 'url' => 'kawkhali.rangamati.gov.bd'],
@@ -68,7 +68,7 @@ class UpazilaSeeder extends Seeder
             ['id' => '51', 'district_id' => '5', 'name' => 'Sonaimori', 'bn_name' => 'সোনাইমুড়ী', 'url' => 'sonaimori.noakhali.gov.bd'],
             ['id' => '52', 'district_id' => '6', 'name' => 'Haimchar', 'bn_name' => 'হাইমচর', 'url' => 'haimchar.chandpur.gov.bd'],
             ['id' => '53', 'district_id' => '6', 'name' => 'Kachua', 'bn_name' => 'কচুয়া', 'url' => 'kachua.chandpur.gov.bd'],
-            ['id' => '54', 'district_id' => '6', 'name' => 'Shahrasti', 'bn_name' => 'শাহরাস্তি	', 'url' => 'shahrasti.chandpur.gov.bd'],
+            ['id' => '54', 'district_id' => '6', 'name' => 'Shahrasti', 'bn_name' => 'শাহরাস্তি', 'url' => 'shahrasti.chandpur.gov.bd'],
             ['id' => '55', 'district_id' => '6', 'name' => 'Chandpur Sadar', 'bn_name' => 'চাঁদপুর সদর', 'url' => 'sadar.chandpur.gov.bd'],
             ['id' => '56', 'district_id' => '6', 'name' => 'Matlab South', 'bn_name' => 'মতলব দক্ষিণ', 'url' => 'matlabsouth.chandpur.gov.bd'],
             ['id' => '57', 'district_id' => '6', 'name' => 'Hajiganj', 'bn_name' => 'হাজীগঞ্জ', 'url' => 'hajiganj.chandpur.gov.bd'],
@@ -512,6 +512,6 @@ class UpazilaSeeder extends Seeder
             ['id' => '495', 'district_id' => '38', 'name' => 'Shayestaganj', 'bn_name' => 'শায়েস্তাগঞ্জ', 'url' => 'shayestaganj.habiganj.gov.bd'],
         ];
 
-        DB::table('upazilas')->insert($upazilas);
+        DB::table('upazilas')->upsert($upazilas, ['id'], ['district_id', 'name', 'bn_name', 'url']);
     }
 }
