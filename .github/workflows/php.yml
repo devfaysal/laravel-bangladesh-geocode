@@ -1,35 +1,137 @@
 name: Run Tests
+
 on:
   push:
-    branches: [ master ]
+    branches: [main]
   pull_request:
-    branches: [ master ]
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.2'
+            laravel: '12.*'
+            testbench: '10.*'
+          - php: '8.3'
+            laravel: '12.*'
+            testbench: '10.*'
+          - php: '8.4'
+            laravel: '12.*'
+            testbench: '10.*'
+          - php: '8.3'
+            laravel: '13.*'
+            testbench: '11.*'
+          - php: '8.4'
+            laravel: '13.*'
+            testbench: '11.*'
+          - php: '8.5'
+            laravel: '13.*'
+            testbench: '11.*'
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
 
-    - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, pdo_sqlite
+          coverage: none
+          tools: composer:v2
 
-    - name: Cache Composer packages
-      id: composer-cache
-      uses: actions/cache@v2
-      with:
-        path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-php-
+      - name: Validate Composer configuration
+        run: composer validate --strict
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress
+      - name: Locate Composer cache
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+      - uses: actions/cache@v6
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: composer-${{ runner.os }}-${{ matrix.php }}-${{ matrix.laravel }}-${{ hashFiles('composer.json') }}
+          restore-keys: composer-${{ runner.os }}-${{ matrix.php }}-${{ matrix.laravel }}-
 
-    - name: Run test suite
-      run: composer test
+      - name: Install dependencies for the framework version
+        env:
+          LARAVEL_VERSION: ${{ matrix.laravel }}
+          TESTBENCH_VERSION: ${{ matrix.testbench }}
+        run: |
+          composer require --dev "laravel/framework:$LARAVEL_VERSION" "orchestra/testbench:$TESTBENCH_VERSION" --no-update --no-interaction
+          composer update --with-all-dependencies --prefer-dist --no-progress --no-interaction
+
+      - run: composer audit
+      - run: composer test
+      - run: composer lint
+      - run: composer analyse
+
+  test-mysql:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - laravel: '12.*'
+            testbench: '10.*'
+          - laravel: '13.*'
+            testbench: '11.*'
+
+    services:
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_DATABASE: bangladesh_geocode_test
+          MYSQL_USER: geocode
+          MYSQL_PASSWORD: geocode
+          MYSQL_ROOT_PASSWORD: root
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --host=127.0.0.1 --user=root --password=root --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=10
+
+    env:
+      TEST_DB_CONNECTION: mysql
+      TEST_DB_HOST: 127.0.0.1
+      TEST_DB_PORT: 3306
+      TEST_DB_DATABASE: bangladesh_geocode_test
+      TEST_DB_USERNAME: geocode
+      TEST_DB_PASSWORD: geocode
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          extensions: mbstring, pdo_mysql
+          coverage: none
+          tools: composer:v2
+
+      - name: Locate Composer cache
+        id: composer-cache
+        run: echo "dir=$(composer config cache-files-dir)" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/cache@v6
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: composer-${{ runner.os }}-8.4-${{ matrix.laravel }}-${{ hashFiles('composer.json') }}
+          restore-keys: composer-${{ runner.os }}-8.4-${{ matrix.laravel }}-
+
+      - name: Install dependencies for the framework version
+        env:
+          LARAVEL_VERSION: ${{ matrix.laravel }}
+          TESTBENCH_VERSION: ${{ matrix.testbench }}
+        run: |
+          composer require --dev "laravel/framework:$LARAVEL_VERSION" "orchestra/testbench:$TESTBENCH_VERSION" --no-update --no-interaction
+          composer update --with-all-dependencies --prefer-dist --no-progress --no-interaction
+
+      - run: composer test

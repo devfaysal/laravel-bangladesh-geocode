@@ -2,66 +2,57 @@
 
 namespace Devfaysal\BangladeshGeocode\Commands;
 
+use Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider;
+use Devfaysal\BangladeshGeocode\Seeders\BangladeshGeocodeSeeder;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Console\ConfirmableTrait;
 
 class SetupCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'BangladeshGeocode:setup';
+    use ConfirmableTrait;
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    protected $signature = 'BangladeshGeocode:setup {--force : Run the command in production}';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $description = 'Migrate and seed Bangladesh geocode data';
+
+    public function handle(): int
     {
-        parent::__construct();
-    }
+        if (! $this->confirmToProceed()) {
+            return self::FAILURE;
+        }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
-    public function handle()
-    {
         $this->info('Setting up Laravel Bangladesh Geocode..');
-        $this->info('Database migrating..');
-        Artisan::call('migrate', ['--path' => 'vendor/devfaysal/laravel-bangladesh-geocode/database/migrations']);
-        $this->info('Database successfully migrated');
 
-        $this->info('Seeding Divisions..');
-        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\DivisionSeeder']);
+        $status = $this->call('vendor:publish', [
+            '--provider' => BangladeshGeocodeServiceProvider::class,
+            '--tag' => 'bangladesh-geocode-migrations',
+        ]);
 
-        $this->info('Seeding Districts..');
-        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\DistrictSeeder']);
+        if ($status !== self::SUCCESS) {
+            return $status;
+        }
 
-        $this->info('Seeding Upazilas..');
-        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\UpazilaSeeder']);
+        $status = $this->call('migrate', [
+            '--path' => dirname(__DIR__, 2).'/database/migrations',
+            '--realpath' => true,
+            '--force' => true,
+        ]);
 
-        $this->info('Seeding Unions..');
-        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\UnionSeeder']);
+        if ($status !== self::SUCCESS) {
+            return $status;
+        }
 
-        $this->info('Seeding Post Offices..');
-        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\PostOfficeSeeder']);
+        $status = $this->call('db:seed', [
+            '--class' => BangladeshGeocodeSeeder::class,
+            '--force' => true,
+        ]);
 
-        $this->info('Publishing migrations..');
-        Artisan::call('vendor:publish', ['--provider' => 'Devfaysal\BangladeshGeocode\BangladeshGeocodeServiceProvider']);
-        $this->info('Setup Successfull');
+        if ($status !== self::SUCCESS) {
+            return $status;
+        }
 
-        return 0;
+        $this->info('Setup successful.');
+
+        return self::SUCCESS;
     }
 }

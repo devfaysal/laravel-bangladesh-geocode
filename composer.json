@@ -1,9 +1,20 @@
 {
     "name": "devfaysal/laravel-bangladesh-geocode",
-    "description": "",
+    "description": "Bangladesh divisions, districts, upazilas, unions and postal data for Laravel address forms and cascading location dropdowns.",
     "keywords": [
-        "devfaysal",
-        "bangladesh-geocode"
+        "laravel",
+        "bangladesh",
+        "bangladesh-geocode",
+        "division",
+        "district",
+        "upazila",
+        "union",
+        "pourashava",
+        "post-office",
+        "postal-code",
+        "address",
+        "dropdown",
+        "devfaysal"
     ],
     "homepage": "https://github.com/devfaysal/laravel-bangladesh-geocode",
     "license": "MIT",
@@ -15,9 +26,16 @@
             "role": "Developer"
         }
     ],
+    "support": {
+        "docs": "https://github.com/devfaysal/laravel-bangladesh-geocode#readme",
+        "issues": "https://github.com/devfaysal/laravel-bangladesh-geocode/issues",
+        "source": "https://github.com/devfaysal/laravel-bangladesh-geocode"
+    },
     "require": {
         "php": "^8.2",
-        "illuminate/support": "^12.0|^13.0"
+        "illuminate/console": "^12.69|^13.30",
+        "illuminate/database": "^12.69|^13.30",
+        "illuminate/support": "^12.69|^13.30"
     },
     "require-dev": {
         "laravel/pint": "^1.18",

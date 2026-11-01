@@ -2,46 +2,37 @@
 
 namespace Devfaysal\BangladeshGeocode\Commands;
 
+use Devfaysal\BangladeshGeocode\Seeders\PourashavaSeeder;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Console\ConfirmableTrait;
 
 class AddPourashava extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
-    protected $signature = 'BangladeshGeocode:addpourashava';
+    use ConfirmableTrait;
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Command description';
+    protected $signature = 'BangladeshGeocode:addpourashava {--force : Run the command in production}';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    protected $description = 'Add or update pourashavas in the unions table';
+
+    public function handle(): int
     {
-        parent::__construct();
-    }
+        if (! $this->confirmToProceed()) {
+            return self::FAILURE;
+        }
 
-    /**
-     * Execute the console command.
-     *
-     * @return int
-     */
-    public function handle()
-    {
         $this->info('Adding Pourashava..');
-        Artisan::call('db:seed', ['--class' => 'Devfaysal\BangladeshGeocode\Seeders\PourashavaSeeder']);
+
+        $status = $this->call('db:seed', [
+            '--class' => PourashavaSeeder::class,
+            '--force' => true,
+        ]);
+
+        if ($status !== self::SUCCESS) {
+            return $status;
+        }
+
         $this->info('Pourashava successfully added');
 
-        return 0;
+        return self::SUCCESS;
     }
 }

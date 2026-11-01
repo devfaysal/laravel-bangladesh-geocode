@@ -40,7 +40,7 @@ Before submitting a pull request:
 
 If the project maintainer has any additional requirements, you will find them listed here.
 
-- **[PSR-2 Coding Standard](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)** - The easiest way to apply the conventions is to install [PHP Code Sniffer](https://pear.php.net/package/PHP_CodeSniffer).
+- **Code style** - Follow the repository's Laravel Pint configuration. Run `composer lint` to check formatting or `composer format` to apply it.
 
 - **Add tests!** - Your patch won't be accepted if it doesn't have tests.
 
@@ -51,5 +51,13 @@ If the project maintainer has any additional requirements, you will find them li
 - **One pull request per feature** - If you want to do more than one thing, send multiple pull requests.
 
 - **Send coherent history** - Make sure each individual commit in your pull request is meaningful. If you had to make multiple intermediate commits while developing, please [squash them](https://www.git-scm.com/book/en/v2/Git-Tools-Rewriting-History#Changing-Multiple-Commit-Messages) before submitting.
+
+## Package discovery and AI resources
+
+Keep the package description, keywords, and support links in `composer.json` accurate. When publishing changes, use that description in the GitHub repository's About section and include relevant topics such as `laravel`, `bangladesh`, `bangladesh-geocode`, `address`, `dropdown`, `division`, `district`, `upazila`, `union`, and `postal-code`. Preserve any other relevant existing topics.
+
+The [dropdown guide](docs/dependent-dropdowns.md), [Boost guidelines](resources/boost/guidelines/core.blade.php), and [dropdown skill](resources/boost/skills/bangladesh-address-dropdowns/SKILL.md) must remain available in Composer distribution archives. Keep the concise AI instructions consistent with the models and command behavior; do not add runtime dependencies just to distribute these resources.
+
+Publishing repository documentation makes it accessible to search tools. Shipping a release makes the corresponding resources available to applications installing that version. Neither guarantees that an agent will select the package; Boost integration applies after the package is installed in a consuming project.
 
 **Happy coding**!

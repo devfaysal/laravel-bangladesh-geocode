@@ -2,8 +2,8 @@
 
 namespace Devfaysal\BangladeshGeocode\Seeders;
 
-use Devfaysal\BangladeshGeocode\Models\Union;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class PourashavaSeeder extends Seeder
 {
@@ -347,16 +347,6 @@ class PourashavaSeeder extends Seeder
             ['id' => '5330', 'upazila_id' => '446', 'name' => 'Haragach Pourashava', 'bn_name' => 'হারাগাছ পৌরসভা', 'url' => 'haragachpourashava.gov.bd'],
         ];
 
-        foreach ($pourashavas as $pourashava) {
-            Union::updateOrCreate(
-                ['id' => $pourashava['id']],
-                [
-                    'upazila_id' => $pourashava['upazila_id'],
-                    'name' => $pourashava['name'],
-                    'bn_name' => $pourashava['bn_name'],
-                    'url' => $pourashava['url'],
-                ]
-            );
-        }
+        DB::table('unions')->upsert($pourashavas, ['id'], ['upazila_id', 'name', 'bn_name', 'url']);
     }
 }

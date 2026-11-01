@@ -158,7 +158,7 @@ class PostOfficeSeeder extends Seeder
             ['id' => 141, 'district_id' => 50, 'thana' => 'Madaripur Sadar', 'thana_bn' => 'মাদারীপুর সদর', 'name' => 'Madaripur Sadar', 'bn_name' => 'মাদারীপুর সদর', 'post_code' => '7900'],
             ['id' => 142, 'district_id' => 50, 'thana' => 'Madaripur Sadar', 'thana_bn' => 'মাদারীপুর সদর', 'name' => 'Mustfapur', 'bn_name' => 'মুস্তফাপুর', 'post_code' => '7904'],
             ['id' => 143, 'district_id' => 50, 'thana' => 'Rajoir', 'thana_bn' => 'রাজৈর', 'name' => 'Khaliya', 'bn_name' => 'খালিয়া', 'post_code' => '7911'],
-            ['id' => 144, 'district_id' => 50, 'thana' => 'Rajoir', 'thana_bn' => 'রাজৈর', 'name' => 'Rajoir', 'bn_name' => 'রাজৈর', 'post_code' => '7910|'],
+            ['id' => 144, 'district_id' => 50, 'thana' => 'Rajoir', 'thana_bn' => 'রাজৈর', 'name' => 'Rajoir', 'bn_name' => 'রাজৈর', 'post_code' => '7910'],
             ['id' => 145, 'district_id' => 46, 'thana' => 'Daulatpur', 'thana_bn' => 'দৌলতপুর', 'name' => 'Daulatpur', 'bn_name' => 'দৌলতপুর', 'post_code' => '1860'],
             ['id' => 146, 'district_id' => 46, 'thana' => 'Gior', 'thana_bn' => 'ঘিওর', 'name' => 'Gior', 'bn_name' => 'ঘিওর', 'post_code' => '1840'],
             ['id' => 147, 'district_id' => 46, 'thana' => 'Lacharagonj', 'thana_bn' => 'লেছড়াগঞ্জ', 'name' => 'Jhitka', 'bn_name' => 'ঝিটকা', 'post_code' => '1831'],
@@ -176,7 +176,7 @@ class PostOfficeSeeder extends Seeder
             ['id' => 159, 'district_id' => 46, 'thana' => 'Shibaloy', 'thana_bn' => 'শিবালয়', 'name' => 'Uthli', 'bn_name' => 'উঠলি', 'post_code' => '1853'],
             ['id' => 160, 'district_id' => 46, 'thana' => 'Singiar', 'thana_bn' => 'সিংগাইর', 'name' => 'Buyra', 'bn_name' => 'বায়রা', 'post_code' => '1821'],
             ['id' => 161, 'district_id' => 46, 'thana' => 'Singiar', 'thana_bn' => 'সিংগাইর', 'name' => 'Jymntb', 'bn_name' => 'জয়মন্তব', 'post_code' => '1822'],
-            ['id' => 162, 'district_id' => 46, 'thana' => 'Singiar', 'thana_bn' => 'সিংগাইর', 'name' => 'Singiar', 'bn_name' => 'সিংগাইর', 'post_code' => '1820|'],
+            ['id' => 162, 'district_id' => 46, 'thana' => 'Singiar', 'thana_bn' => 'সিংগাইর', 'name' => 'Singiar', 'bn_name' => 'সিংগাইর', 'post_code' => '1820'],
             ['id' => 163, 'district_id' => 48, 'thana' => 'Gazaria', 'thana_bn' => 'গজারিয়া', 'name' => 'Gazaria', 'bn_name' => 'গজারিয়া', 'post_code' => '1510'],
             ['id' => 164, 'district_id' => 48, 'thana' => 'Gazaria', 'thana_bn' => 'গজারিয়া', 'name' => 'Hosendee', 'bn_name' => 'হোসেন্দি', 'post_code' => '1511'],
             ['id' => 165, 'district_id' => 48, 'thana' => 'Gazaria', 'thana_bn' => 'গজারিয়া', 'name' => 'Rasulpur', 'bn_name' => 'রসুলপুর', 'post_code' => '1512'],
@@ -387,7 +387,7 @@ class PostOfficeSeeder extends Seeder
             ['id' => 370, 'district_id' => 64, 'thana' => 'Netrokona Sadar', 'thana_bn' => 'নেত্রকোণা সদর', 'name' => 'Netrokona Sadar', 'bn_name' => 'নেত্রকোণা সদর', 'post_code' => '2400'],
             ['id' => 371, 'district_id' => 64, 'thana' => 'Purwdhola', 'thana_bn' => 'পুর্বধোলা', 'name' => 'Jariyajhanjhail', 'bn_name' => 'জারিয়া ঝানঝাইল', 'post_code' => '2412'],
             ['id' => 372, 'district_id' => 64, 'thana' => 'Purwdhola', 'thana_bn' => 'পুর্বধোলা', 'name' => 'Purwdhola', 'bn_name' => 'পুর্বধোলা', 'post_code' => '2410'],
-            ['id' => 373, 'district_id' => 64, 'thana' => 'Purwdhola', 'thana_bn' => 'পুর্বধোলা', 'name' => 'Shamgnj', 'bn_name' => 'শামগঞ্জ', 'post_code' => '2411|'],
+            ['id' => 373, 'district_id' => 64, 'thana' => 'Purwdhola', 'thana_bn' => 'পুর্বধোলা', 'name' => 'Shamgnj', 'bn_name' => 'শামগঞ্জ', 'post_code' => '2411'],
             ['id' => 374, 'district_id' => 61, 'thana' => 'Bokshiganj', 'thana_bn' => 'বকশীগঞ্জ', 'name' => 'Bokshiganj', 'bn_name' => 'বকশীগঞ্জ', 'post_code' => '2140'],
             ['id' => 375, 'district_id' => 61, 'thana' => 'Jhenaigati', 'thana_bn' => 'ঝিনাইগাতী', 'name' => 'Jhenaigati', 'bn_name' => 'ঝিনাইগাতী', 'post_code' => '2120'],
             ['id' => 376, 'district_id' => 61, 'thana' => 'Nokla', 'thana_bn' => 'নকলা', 'name' => 'Gnpaddi', 'bn_name' => 'গণপাদ্দি', 'post_code' => '2151'],
@@ -1374,8 +1374,6 @@ class PostOfficeSeeder extends Seeder
             ['id' => 1357, 'district_id' => 58, 'thana' => 'Thakurgaon Sadar', 'thana_bn' => 'ঠাকুরগাঁও সদর', 'name' => 'Thakurgaon Sadar', 'bn_name' => 'ঠাকুরগাঁও সদর', 'post_code' => '5100'],
         ];
 
-        foreach (array_chunk($post_offices, 200) as $chunk) {
-            DB::table('post_offices')->insert($chunk);
-        }
+        DB::table('post_offices')->upsert($post_offices, ['id'], ['district_id', 'thana', 'thana_bn', 'name', 'bn_name', 'post_code']);
     }
 }
